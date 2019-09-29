@@ -1,0 +1,17 @@
+version: '2'
+services:
+  graphql-example-server:
+    container_name: graphql-example-server
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    image: graphql-example-server:latest
+    ports:
+      - 8080:8080
+    networks:
+      - spring-cloud-network
+    logging:
+      driver: json-file
+networks:
+  spring-cloud-network:
+    driver: bridge
