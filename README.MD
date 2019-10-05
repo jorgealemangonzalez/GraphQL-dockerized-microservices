@@ -10,8 +10,34 @@ to check if the server has been started correctly
 
 `docker-compose up --build`
 
+or
+
+`./gradlew composeUp`
+
 ## This was created thanks to
 * [Getting started with GraphQL Java and Spring Boot](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/)
 * [Dockerizing a Spring Boot Application](https://www.baeldung.com/dockerizing-spring-boot-application#Dockerize)
 
+## Troubleshooting intellij:
+**docker.errors.TLSParameterError: Path to a certificate and key files .........**
+- Go to Settings >> Build, Execution, Deployment >> Docker
 
+- Select "TCP socket"
+
+- Enter 'unix:///var/run/docker.sock' under "Engine API URL"
+
+## Checking that works
+Open the GraphQL Playground and write `localhost:8082/graphql` as host and the following request:
+```
+{
+  bookById(id: "book-1"){
+    id
+    name
+    pageCount
+    author {
+      firstName
+      lastName
+    }
+  }
+}
+```
