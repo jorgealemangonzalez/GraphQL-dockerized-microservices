@@ -17,6 +17,7 @@ or
 ## This was created thanks to
 * [Getting started with GraphQL Java and Spring Boot](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/)
 * [Dockerizing a Spring Boot Application](https://www.baeldung.com/dockerizing-spring-boot-application#Dockerize)
+* [Apollo GraphQL java client library generator](https://github.com/apollographql/apollo-android)
 
 ## Troubleshooting intellij:
 **docker.errors.TLSParameterError: Path to a certificate and key files .........**
