@@ -12,6 +12,18 @@ services:
       - spring-cloud-network
     logging:
       driver: json-file
+  authors-server:
+    container_name: authors-server
+    build:
+      context: authors-server/
+      dockerfile: Dockerfile
+    image: authors-server:latest
+    ports:
+      - 8081:8081
+    networks:
+      - spring-cloud-network
+    logging:
+      driver: json-file
 networks:
   spring-cloud-network:
     driver: bridge
