@@ -1,13 +1,11 @@
 version: '2'
 services:
-  graphql-example-server:
-    container_name: graphql-example-server
+  books-server:
+    container_name: books-server
     build:
-      context: .
+      context: books-server/
       dockerfile: Dockerfile
-      args:
-        JAR_FILE: build/libs/graphql-example-0.0.1-SNAPSHOT.jar
-    image: graphql-example-server:latest
+    image: books-server:latest
     ports:
       - 8080:8080
     networks:
