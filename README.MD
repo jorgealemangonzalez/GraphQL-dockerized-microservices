@@ -27,7 +27,7 @@ or
 - Enter 'unix:///var/run/docker.sock' under "Engine API URL"
 
 ## Checking that works
-Open the GraphQL Playground and write `localhost:8082/graphql` as host and the following request:
+Open the GraphQL Playground and write `http://localhost:8080/graphql` as host and the following request:
 ```
 {
   bookById(id: "book-1"){
