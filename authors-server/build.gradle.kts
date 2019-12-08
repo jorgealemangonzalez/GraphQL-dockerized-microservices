@@ -12,6 +12,10 @@ group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
+springBoot {
+	mainClassName = "com.graphql.authors.AuthorsServerKt"
+}
+
 repositories {
 	mavenCentral()
 }
