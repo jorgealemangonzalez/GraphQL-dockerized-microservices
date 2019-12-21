@@ -16,7 +16,7 @@ repositories {
 }
 
 bootJar {
-	mainClassName 'com.graphqlexample.bookdetails.BookDetailsServer'
+	mainClassName 'com.graphqlexample.bookdetails.BooksServer'
 }
 
 dependencies {
