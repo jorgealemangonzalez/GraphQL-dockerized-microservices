@@ -1,3 +1,12 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath("com.apollographql.apollo:apollo-gradle-plugin:1.2.2")
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.1.8.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
@@ -9,10 +18,12 @@ group = 'com.graphql-java.tutorial'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+apply plugin: 'com.apollographql.android'
 apply plugin: 'docker-compose'
 
 repositories {
 	mavenCentral()
+	jcenter() // This is for apollographql
 }
 
 bootJar {
@@ -25,6 +36,14 @@ dependencies {
 	implementation 'com.google.guava:guava:26.0-jre'
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config:2.1.4.RELEASE'
+	implementation("com.apollographql.apollo:apollo-runtime:1.2.2")
 
+	// If not already on your classpath, you might need the jetbrains annotations
+	compileOnly("org.jetbrains:annotations:13.0")
+	testCompileOnly("org.jetbrains:annotations:13.0")
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+apollo {
+	generateKotlinModels = false // or false
 }

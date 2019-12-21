@@ -11,6 +11,8 @@ import java.util.Map;
 @Component
 public class GraphQLDataFetchers {
 
+
+
     private static List<Map<String, String>> books = Arrays.asList(
             ImmutableMap.of("id", "book-1",
                     "name", "Harry Potter and the Philosopher's Stone",
@@ -26,17 +28,11 @@ public class GraphQLDataFetchers {
                     "authorId", "author-3")
     );
 
-    private static List<Map<String, String>> authors = Arrays.asList(
-            ImmutableMap.of("id", "author-1",
-                    "firstName", "Joanne",
-                    "lastName", "Rowling"),
-            ImmutableMap.of("id", "author-2",
-                    "firstName", "Herman",
-                    "lastName", "Melville"),
-            ImmutableMap.of("id", "author-3",
-                    "firstName", "Anne",
-                    "lastName", "Rice")
-    );
+    private final AuthorService authorService;
+
+    public GraphQLDataFetchers() {
+        authorService = new AuthorService();
+    }
 
     public DataFetcher getBookByIdDataFetcher() {
         return dataFetchingEnvironment -> {
@@ -53,11 +49,7 @@ public class GraphQLDataFetchers {
         return dataFetchingEnvironment -> {
             Map<String, String> book = dataFetchingEnvironment.getSource();
             String authorId = book.get("authorId");
-            return authors
-                    .stream()
-                    .filter(author -> author.get("id").equals(authorId))
-                    .findFirst()
-                    .orElse(null);
+            return authorService.getAuthorById(authorId);
         };
     }
 
